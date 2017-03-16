@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sife.VistaDetalleVentaController">
+   <children>
+      <ListView fx:id="listaNotas" layoutY="105.0" prefHeight="310.0" prefWidth="252.0" />
+      <TextField fx:id="textBusqueda" layoutX="7.0" layoutY="50.0" prefHeight="45.0" prefWidth="156.0" promptText="Ingresa folio" />
+      <Button fx:id="botonCargar" layoutX="175.0" layoutY="50.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="77.0" style="-fx-background-color: #20B2AA;" text="Cargar" textFill="WHITE">
+         <font>
+            <Font name="AvenirNextLTPro-Bold" size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="404.0" layoutY="61.0" text="DETALLE DE VENTA">
+         <font>
+            <Font name="AvenirNextLTPro-Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="353.0" layoutY="111.0" text="Folio:">
+         <font>
+            <Font name="AvenirNextLTPro-Regular" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="texFolio" editable="false" layoutX="500.0" layoutY="107.0" />
+      <TextField fx:id="texFecha" editable="false" layoutX="500.0" layoutY="153.0" />
+      <Label layoutX="353.0" layoutY="157.0" text="Fecha:">
+         <font>
+            <Font name="AvenirNextLTPro-Regular" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="437.0" layoutY="202.0" text="PRODUCTOS">
+         <font>
+            <Font name="AvenirNextLTPro-Bold" size="20.0" />
+         </font>
+      </Label>
+      <ListView fx:id="listaProductos" layoutX="312.0" layoutY="239.0" prefHeight="173.0" prefWidth="414.0" />
+      <Label layoutX="421.0" layoutY="437.0" text="SUBTOTAL:">
+         <font>
+            <Font name="AvenirNextLTPro-Regular" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="422.0" layoutY="479.0" text="IVA:">
+         <font>
+            <Font name="AvenirNextLTPro-Regular" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="421.0" layoutY="522.0" text="TOTAL:">
+         <font>
+            <Font name="AvenirNextLTPro-Regular" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textSubtotal" editable="false" layoutX="539.0" layoutY="433.0" />
+      <TextField fx:id="texIva" editable="false" layoutX="539.0" layoutY="475.0" />
+      <TextField fx:id="textTotal" editable="false" layoutX="539.0" layoutY="518.0" />
+      <Button fx:id="botonSalir" layoutX="694.0" layoutY="19.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="77.0" style="-fx-background-color: #FF6347;" text="Salir" textFill="WHITE">
+         <font>
+            <Font name="AvenirNextLTPro-Bold" size="15.0" />
+         </font>
+      </Button>
+      <TextField fx:id="texFechaInicio" layoutX="59.0" layoutY="433.0" prefHeight="45.0" prefWidth="193.0" promptText="Fecha inicio dd/mm/aaaa" />
+      <TextField fx:id="texFechaFin" layoutX="59.0" layoutY="484.0" prefHeight="45.0" prefWidth="193.0" promptText="Fecha fin dd/mm/aaaa">
+         <font>
+            <Font name="AvenirNextLTPro-Regular" size="15.0" />
+         </font>
+      </TextField>
+      <Button fx:id="botonFiltro" layoutX="141.0" layoutY="537.0" mnemonicParsing="false" style="-fx-background-color: #4169E1;" text="Aplicar filtro" textFill="WHITE">
+         <font>
+            <Font name="AvenirNextLTPro-Bold" size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
