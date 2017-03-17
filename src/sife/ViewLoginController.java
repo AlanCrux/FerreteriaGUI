@@ -1,13 +1,19 @@
 package sife;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -15,43 +21,38 @@ import javafx.scene.paint.Color;
  * @author Alan Yoset García C
  */
 public class ViewLoginController implements Initializable {
-  @FXML private Button botonIngresar;
-  @FXML private TextField textUser;
-  @FXML private TextField textPassword;   
-  @FXML private Label mensajeIngreso; 
- 
-  Usuario administrador = new Usuario("administrador","12345");
-  Usuario observador = new Usuario("observador","54321"); 
-  @FXML
-  private Label labelTitulo;
+
   
+  private final String user = "super";
+  private final String clave = "&super";
+  @FXML private Button botonIngresar;
+
+  /**
+   * Initializes the controller class.
+   */
   @Override
   public void initialize(URL url, ResourceBundle rb) {
-    mensajeIngreso.setText("");
-    botonIngresar.setOnAction(event -> {
-      checkUser(textUser.getText(), textPassword.getText());
-    });
+    
   }  
   
-  public void checkUser(String user, String password){
-    if (user.equals("administrador")) {
-      checkPassword(administrador, password);
-    } else if (user.equals("observador")) {
-      checkPassword(observador, password);
-    } else {
-      mensajeIngreso.setText("Ese usuario no existe");
-      mensajeIngreso.setTextFill(Color.RED);
-    } 
-  }
-  
-  public void checkPassword(Usuario usuario, String password){
-    if (usuario.getPassword().equals(password)) {
-      mensajeIngreso.setText("Usuario correcto");
-      mensajeIngreso.setTextFill(Color.GREEN);
-    } else {
-      mensajeIngreso.setText("Error de password");
-      mensajeIngreso.setTextFill(Color.RED);
+  @FXML
+ private void handleButtonAction(ActionEvent event) throws IOException{
+     Stage stage; 
+     Parent root;
+     if(event.getSource()==botonIngresar){
+        //get reference to the button's stage         
+        stage=(Stage) botonIngresar.getScene().getWindow();
+        //load up OTHER FXML document
+         root = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
+      }
+     else{
+       stage=(Stage) botonIngresar.getScene().getWindow();
+        root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+      }
+     //create a new scene with root and set the stage
+      Scene scene = new Scene(root);
+      stage.setScene(scene);
+      stage.show();
     }
-  }
   
 }

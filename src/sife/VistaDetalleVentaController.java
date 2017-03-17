@@ -85,9 +85,10 @@ public class VistaDetalleVentaController implements Initializable {
     }
     listViewData.clear();
     System.out.println(ventas.size());
-    for (int i = 0; i < ventas.size(); i++) {
-      listViewData.add(ventas.get(i));
-      System.out.println(ventas.get(i));
+   for (int i = 0; i < ventas.size(); i++) {
+     listViewData.add(ventas.get(i));
+      //System.out.println(ventas.get(i));
+      //EL PROBLEMA ESTA AQUI
     }
   }
   

@@ -213,6 +213,7 @@ public class VistaVentasController implements Initializable  {
       temp.setCantidad(HerramientaVenta.getCantidad());
       temp.setPrecio(HerramientaVenta.getPrecio());
       temp.setSubtotal(HerramientaVenta.getSubtotal());
+      System.out.println(temp);
       ventaAnonima.addHerramienta(temp);
     });
     ventas.add(ventaAnonima);

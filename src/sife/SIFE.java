@@ -1,52 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sife;
 
+import java.io.IOException;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
- *
  * @author Alan Yoset García C
  */
 public class SIFE extends Application {
   
   @Override
-  public void start(Stage primaryStage) {
-    try {
-      FXMLLoader login = new FXMLLoader(getClass().getResource("ViewLogin.fxml"));
-      FXMLLoader inventario = new FXMLLoader(getClass().getResource("ViewInventario.fxml"));
-      FXMLLoader ventas = new FXMLLoader(getClass().getResource("VistaVentas.fxml"));
-      FXMLLoader detalleventas = new FXMLLoader(getClass().getResource("VistaDetalleVenta.fxml"));
-      
-      Parent page = login.load();
-      Parent vistainventario = inventario.load();
-      Parent vistaVentas = ventas.load();
-      Parent vistaDetalleVentas = detalleventas.load();
+  public void start(Stage stage) throws IOException {
+    //Cargar el contenido del archivo ventana.fxml, procesarlo y crear el
+    //contenido a partor del mismo.
+    Parent root = FXMLLoader.load(getClass().getResource("ViewLogin.fxml"));
 
-      Scene scene = new Scene(vistaDetalleVentas); 
-      primaryStage.setScene(scene);
-      primaryStage.show();
-    } catch (Exception e) {
-    }
-    
+    //Asiganar las UI creadas desde .fxml a una Scene
+    Scene scene = new Scene(root);
+
+    //Asignar la scene a la ventana principal o stage y mostrarla.
+    stage.setTitle("Iniciar sesión");
+    stage.setScene(scene);
+    stage.show();
   }
 
-  /**
-   * @param args the command line arguments
-   */
   public static void main(String[] args) {
     launch(args);
   }
-  
+
 }
