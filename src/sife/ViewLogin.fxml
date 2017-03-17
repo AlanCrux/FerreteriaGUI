@@ -29,12 +29,12 @@
          <font>
             <Font name="AvenirNextLTPro-Regular" size="18.0" />
          </font></PasswordField>
-      <Button fx:id="botonIngresar" layoutX="175.0" layoutY="276.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #FF6347;" text="Ingresar" textFill="WHITE">
+      <Button fx:id="botonIngresar" layoutX="175.0" layoutY="276.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #FF6347;" text="Ingresar" onAction="#inventarioSuper" textFill="WHITE">
          <font>
             <Font name="AvenirNextLTPro-Bold" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="botonObservador" layoutX="342.0" layoutY="157.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #1E90FF;" text="Observador" textFill="WHITE">
+      <Button fx:id="botonObservador" layoutX="342.0" layoutY="157.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #1E90FF;" text="Observador" onAction="#inventarioObservable" textFill="WHITE">
          <font>
             <Font name="AvenirNextLTPro-Bold" size="17.0" />
          </font>

@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -55,6 +56,8 @@ public class VistaDetalleVentaController implements Initializable {
   
   private ObservableList<Venta> listViewData = FXCollections.observableArrayList();
   private ObservableList<HerramientaVenta> dataHerramientas = FXCollections.observableArrayList();
+  private Stage stagePrincipal;
+  private boolean isEditable; 
 
   /**
    * Initializes the controller class.
@@ -104,5 +107,13 @@ public class VistaDetalleVentaController implements Initializable {
     for (int i = 0; i < seleccion.getArticulos().size(); i++) {
       dataHerramientas.add(seleccion.getArticulos().get(i));
     }
+  }
+
+  void setStagePrincipal(Stage ventana) {
+    this.stagePrincipal = ventana; 
+  }
+
+  void setEditable(boolean b) {
+    this.isEditable = b; 
   }
 }

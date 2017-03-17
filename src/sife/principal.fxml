@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="sife.PrincipalController">
+   <children>
+      <Pane prefHeight="79.0" prefWidth="800.0" style="-fx-background-color: #4169E1;">
+         <children>
+            <Label layoutX="133.0" layoutY="18.0" text="Sistema de control de ferreterías" textFill="WHITE">
+               <font>
+                  <Font name="AvenirNextLTPro-Regular" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Button fx:id="botonInventario" layoutX="519.0" layoutY="96.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #FF4500;" text="Inventario" onAction="#inventario" textFill="WHITE">
+         <font>
+            <Font name="AvenirNextLTPro-Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="botonVender" layoutX="388.0" layoutY="96.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #32CD32;" text="Vender" onAction="#vender" textFill="WHITE">
+         <font>
+            <Font name="AvenirNextLTPro-Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="botonReportes" layoutX="652.0" layoutY="96.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #FF1493;" text="Reportes" onAction="#reportes" textFill="WHITE">
+         <font>
+            <Font name="AvenirNextLTPro-Bold" size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="119.0" layoutY="266.0" text="Herramientas en el inventario:">
+         <font>
+            <Font name="AvenirNextLTPro-Regular" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="119.0" layoutY="465.0" text="Activos totales:">
+         <font>
+            <Font name="AvenirNextLTPro-Regular" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="119.0" layoutY="333.0" text="Total de ventas realizadas:">
+         <font>
+            <Font name="AvenirNextLTPro-Regular" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="118.0" layoutY="399.0" text="Ganancias globales:">
+         <font>
+            <Font name="AvenirNextLTPro-Regular" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="202.0" layoutY="195.0" text="INFORMACIÓN GENERAL DEL NEGOCIO">
+         <font>
+            <Font name="AvenirNextLTPro-Bold" size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="texHerramientas" editable="false" layoutX="471.0" layoutY="262.0" />
+      <TextField fx:id="textVentas" editable="false" layoutX="471.0" layoutY="329.0" />
+      <TextField fx:id="textGanancias" editable="false" layoutX="471.0" layoutY="395.0" />
+      <TextField fx:id="textActivos" editable="false" layoutX="471.0" layoutY="461.0" />
+   </children>
+</AnchorPane>

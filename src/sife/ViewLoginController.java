@@ -24,34 +24,40 @@ import javafx.stage.Stage;
  * @author Alan Yoset García C
  */
 public class ViewLoginController implements Initializable {
-
-  
   private final String user = "super";
   private final String clave = "&super";
   @FXML private Button botonIngresar;
+  @FXML private TextField textUser;
+  @FXML private PasswordField textClave;
 
-  /**
-   * Initializes the controller class.
-   */
+  private SIFE ProgramaPrincipal;
+
+  @FXML
+  private void inventarioSuper(ActionEvent event) {
+    if (textUser.getText().equals(user)) {
+      if (textClave.getText().equals(clave)) {
+        ProgramaPrincipal.cargarPrincipal();
+        textClave.clear();
+        textUser.clear();
+      } else{
+        System.out.println("Error de clave");
+      }
+    } else {
+      System.out.println("Error de usuario");
+    }
+  }
+  @FXML
+  private void inventarioObservable(ActionEvent event) {
+    ProgramaPrincipal.cargarPrincipalObservable();
+  }
+
+  public void setProgramaPrincipal(SIFE ProgramaPrincipal) {
+    this.ProgramaPrincipal = ProgramaPrincipal;
+  }
+
   @Override
   public void initialize(URL url, ResourceBundle rb) {
-    botonIngresar.setOnAction((event) -> {
-      Node node = (Node) event.getSource();
-      Stage stage = (Stage) node.getScene().getWindow();
-      Parent root;
-      try {
-        root = FXMLLoader.load(getClass().getResource("ViewInventario.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setTitle("Inventario");
-        stage.centerOnScreen();
-        stage.show();
-      } catch (IOException ex) {
-        Logger.getLogger(ViewInventarioController.class.getName()).log(Level.SEVERE, null, ex);
-      }
-    });
+    // TODO
   }
-  
- 
-  
+
 }

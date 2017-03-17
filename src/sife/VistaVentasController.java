@@ -15,6 +15,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -57,6 +58,9 @@ public class VistaVentasController implements Initializable  {
   private double iva = 0;
   private double total = 0;
   boolean enlista;
+  
+  private Stage stagePrincipal;
+  private boolean isEditable; 
   
   public VistaVentasController() {
     leerInventario();
@@ -218,6 +222,14 @@ public class VistaVentasController implements Initializable  {
     });
     ventas.add(ventaAnonima);
     archNotas.salida(ventas);
+  }
+
+  void setStagePrincipal(Stage ventana) {
+    this.stagePrincipal = ventana;
+  }
+
+  void setEditable(boolean b) {
+    this.isEditable = b; 
   }
   
 }

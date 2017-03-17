@@ -121,10 +121,5 @@
             <Font name="AvenirNextLTPro-Regular" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="botonActivos" layoutX="429.0" layoutY="14.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="80.0" style="-fx-background-color: #4169E1;" text="Activos" textFill="WHITE">
-         <font>
-            <Font name="AvenirNextLTPro-Bold" size="15.0" />
-         </font>
-      </Button>
    </children>
 </AnchorPane>

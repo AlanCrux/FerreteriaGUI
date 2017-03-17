@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -42,6 +43,8 @@ public class ViewInventarioController implements Initializable {
   private ObservableList<Herramienta> listViewData = FXCollections.observableArrayList();
   private final Archivo archInventario = new Archivo("inventario.obj");
   private ArrayList<Herramienta> inventario;  
+  private Stage stagePrincipal;
+  private boolean isEditable; 
   
   public ViewInventarioController(){
     leerInventario();
@@ -87,30 +90,34 @@ public class ViewInventarioController implements Initializable {
     });
     
     botonAgregar.setOnAction(event -> {
-      if (banderaEditar) {
-        System.out.println("No mientras editas");
+      if (!isEditable) {
+        System.out.println("No puedes editar");
       } else {
-        if (banderaAgregar) {
-          if (cuadrosVacios()) {
-            System.out.println("Nope");
-          } else {
-            banderaAgregar = false;
-            protegerCuadros();
-            agregarNuevoLista();
-            listViewData.remove(listViewData.size() - 1);
-            leerInventario();
-            listView.setItems(listViewData);
-            listView.getSelectionModel().select(0);
-            botonAgregar.setText("Agregar");
-            listView.setMouseTransparent( false );
-            listView.setFocusTraversable( true );
-          }
+        if (banderaEditar) {
+          System.out.println("No mientras editas");
         } else {
-          banderaAgregar = true;
-          addNew();
-          listView.setMouseTransparent( true );
-          listView.setFocusTraversable( false );
-          txNombre.requestFocus();
+          if (banderaAgregar) {
+            if (cuadrosVacios()) {
+              System.out.println("Nope");
+            } else {
+              banderaAgregar = false;
+              protegerCuadros();
+              agregarNuevoLista();
+              listViewData.remove(listViewData.size() - 1);
+              leerInventario();
+              listView.setItems(listViewData);
+              listView.getSelectionModel().select(0);
+              botonAgregar.setText("Agregar");
+              listView.setMouseTransparent(false);
+              listView.setFocusTraversable(true);
+            }
+          } else {
+            banderaAgregar = true;
+            addNew();
+            listView.setMouseTransparent(true);
+            listView.setFocusTraversable(false);
+            txNombre.requestFocus();
+          }
         }
       }
     });
@@ -160,6 +167,7 @@ public class ViewInventarioController implements Initializable {
           } else {
             eliminar();
             leerInventario();
+            desprotegerCuadros();
             listView.setItems(listViewData);
             listView.getSelectionModel().select(0);
           }
@@ -403,4 +411,13 @@ public class ViewInventarioController implements Initializable {
     texAdescripcion.setText("");
     txExistencia.setText("");
   }
+
+  void setStagePrincipal(Stage ventana) {
+    this.stagePrincipal = stagePrincipal;
+  }
+
+  void setEditable(boolean b) {
+    isEditable = b; 
+  }
+  
 }
