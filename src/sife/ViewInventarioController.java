@@ -42,6 +42,7 @@ public class ViewInventarioController implements Initializable {
   private ObservableList<Herramienta> listViewData = FXCollections.observableArrayList();
   private final Archivo archInventario = new Archivo("inventario.obj");
   private ArrayList<Herramienta> inventario;  
+  
   public ViewInventarioController(){
     leerInventario();
   }
@@ -217,7 +218,7 @@ public class ViewInventarioController implements Initializable {
   
   public void addNew(){
     Herramienta nueva = new Herramienta();
-    nueva.setClave("S15"+listViewData.size());
+    nueva.setClave("S15"+(listViewData.size()+1));
     nueva.setNombre("Nueva herramienta");
     nueva.setPrecioVenta(0);
     listViewData.add(nueva);
