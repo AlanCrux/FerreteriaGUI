@@ -1,7 +1,11 @@
 package sife;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -206,20 +210,20 @@ public class VistaVentasController implements Initializable  {
   public void generarVenta(){
     HerramientaVenta temp = new HerramientaVenta();
     Venta ventaAnonima = new Venta();
-    ventaAnonima.setFecha("Hoy");
-    ventaAnonima.setIdNota("Y"+ventas.size());
+    Calendar calendario = GregorianCalendar.getInstance();
+    Date fecha = calendario.getTime();
+    SimpleDateFormat formatoDeFecha = new SimpleDateFormat("dd/MM/yyyy");
+    String fechaS = formatoDeFecha.format(fecha);
+    ventaAnonima.setFecha(fechaS);
+    ventaAnonima.setIdNota("zS1"+ventas.size());
     ventaAnonima.setIva(iva);
     ventaAnonima.setSubtotal(subtotal);
     ventaAnonima.setTotal(total);
-    tabla.getItems().forEach(HerramientaVenta -> {
-      temp.setClave(HerramientaVenta.getClave());
-      temp.setNombre(HerramientaVenta.getNombre());
-      temp.setCantidad(HerramientaVenta.getCantidad());
-      temp.setPrecio(HerramientaVenta.getPrecio());
-      temp.setSubtotal(HerramientaVenta.getSubtotal());
-      System.out.println(temp);
-      ventaAnonima.addHerramienta(temp);
-    });
+    for (int i = 0; i < dataCarrito.size(); i++) {
+      ventaAnonima.addHerramienta(new HerramientaVenta(dataCarrito.get(i).getClave(),
+      dataCarrito.get(i).getNombre(),dataCarrito.get(i).getPrecio(),dataCarrito.get(i).getCantidad(),
+      dataCarrito.get(i).getSubtotal()));
+    }
     ventas.add(ventaAnonima);
     archNotas.salida(ventas);
   }

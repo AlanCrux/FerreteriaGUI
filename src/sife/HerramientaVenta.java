@@ -71,7 +71,7 @@ public final class HerramientaVenta implements Serializable{
 
   @Override
   public String toString() {
-    return nombre + " | " + precio + " | " + cantidad + " | " + subtotal;
+    return nombre + " | $" + precio + " | Cantidad: " + cantidad + " | Sub: $" + subtotal;
   }
   
   

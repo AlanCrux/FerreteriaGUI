@@ -102,10 +102,11 @@ public class VistaDetalleVentaController implements Initializable {
     textSubtotal.setText(seleccion.getSubtotal()+"");
     texIva.setText(seleccion.getIva()+"");
     textTotal.setText(seleccion.getTotal()+"");
-    
+    ArrayList<HerramientaVenta> temp = seleccion.getArticulos();
     dataHerramientas.clear();
     for (int i = 0; i < seleccion.getArticulos().size(); i++) {
-      dataHerramientas.add(seleccion.getArticulos().get(i));
+      dataHerramientas.add(temp.get(i));
+      System.out.println(temp.get(i));
     }
   }
 
