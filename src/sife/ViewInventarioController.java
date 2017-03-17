@@ -48,12 +48,13 @@ public class ViewInventarioController implements Initializable {
   
   public ViewInventarioController(){
     leerInventario();
+    listView.getSelectionModel().select(0);
   }
   
   @Override
   public void initialize(URL url, ResourceBundle rb) {
     listView.setItems(listViewData);
-    listView.getSelectionModel().select(0);
+    
     
     listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Herramienta>() {
       @Override
@@ -85,10 +86,11 @@ public class ViewInventarioController implements Initializable {
           txBusqueda.setText("");
         } else {
           metodoDeBusquedaTriple();
+          listView.getSelectionModel().select(0);
         }
       }
     });
-    
+    listView.getSelectionModel().select(0);
     botonAgregar.setOnAction(event -> {
       if (!isEditable) {
         System.out.println("No puedes editar");
@@ -123,53 +125,62 @@ public class ViewInventarioController implements Initializable {
     });
     
     botonEditar.setOnAction(event -> {
-      if (listViewData.isEmpty()) {
-        System.out.println("No hay nada");
+      if (!isEditable) {
+        System.out.println("No puedes editar");
       } else {
-        if (banderaAgregar) {
-          System.out.println("No mientras agregas");
+        if (listViewData.isEmpty()) {
+          System.out.println("No hay nada");
         } else {
-          if (banderaEditar) {
-            banderaEditar = false;
-            editar();
-            botonEditar.setText("Editar");
-            protegerCuadros();
-            leerInventario();
-            listView.setItems(listViewData);
-            listView.getSelectionModel().select(0);
-            listView.setMouseTransparent( false );
-            listView.setFocusTraversable( true );
+          if (banderaAgregar) {
+            System.out.println("No mientras agregas");
           } else {
-            banderaEditar = true;
-            desprotegerCuadros();
-            botonEditar.setText("Refresh");
-            listView.setMouseTransparent( true );
-            listView.setFocusTraversable( false );
+            if (banderaEditar) {
+              banderaEditar = false;
+              editar();
+              botonEditar.setText("Editar");
+              protegerCuadros();
+              leerInventario();
+              listView.setItems(listViewData);
+              listView.getSelectionModel().select(0);
+              listView.setMouseTransparent(false);
+              listView.setFocusTraversable(true);
+            } else {
+              banderaEditar = true;
+              desprotegerCuadros();
+              botonEditar.setText("Refresh");
+              listView.setMouseTransparent(true);
+              listView.setFocusTraversable(false);
+            }
           }
         }
       }
     });
     
     botonEliminar.setOnAction(event -> {
-      if (banderaEditar) {
-        System.out.println("Primero termina de editar");
+      if (!isEditable) {
+        System.out.println("No puedes eliminar");
       } else {
-        if (listViewData.isEmpty()) {
-          System.out.println("No hay nada");
+        if (banderaEditar) {
+          System.out.println("Primero termina de editar");
         } else {
-          if (banderaAgregar) {
-            banderaAgregar = false;
-            botonAgregar.setText("Agregar");
-            eliminar();
-            leerInventario();
-            listView.setItems(listViewData);
-            listView.getSelectionModel().select(0);
+          if (listViewData.isEmpty()) {
+            System.out.println("No hay nada");
           } else {
-            eliminar();
-            leerInventario();
-            desprotegerCuadros();
-            listView.setItems(listViewData);
-            listView.getSelectionModel().select(0);
+            if (banderaAgregar) {
+              banderaAgregar = false;
+              botonAgregar.setText("Agregar");
+              eliminar();
+              leerInventario();
+              listView.setMouseTransparent(false);
+              listView.setFocusTraversable(true);
+              listView.setItems(listViewData);
+              listView.getSelectionModel().select(0);
+            } else {
+              eliminar();
+              leerInventario();
+              listView.setItems(listViewData);
+              listView.getSelectionModel().select(0);
+            }
           }
         }
       }
@@ -180,6 +191,7 @@ public class ViewInventarioController implements Initializable {
         System.out.println("Primero termina la operacion actual");
       } else {
         ordenarClave();
+        listView.getSelectionModel().select(0);
         botonClave.setStyle("-fx-background-color: #FFD700;");
         botonNombre.setStyle("-fx-background-color: #D3D3D3;");
       }
@@ -190,6 +202,7 @@ public class ViewInventarioController implements Initializable {
         System.out.println("Primero termina la operacion actual");
       } else{
         ordenarNombre();
+        listView.getSelectionModel().select(0);
         botonNombre.setStyle("-fx-background-color: #FFD700;");
         botonClave.setStyle("-fx-background-color: #D3D3D3;");
       } 

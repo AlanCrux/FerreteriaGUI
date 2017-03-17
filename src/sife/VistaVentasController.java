@@ -95,9 +95,13 @@ public class VistaVentasController implements Initializable  {
     tabla.getColumns().addAll(claveCol,nombreCol,precioCol, cantidadCol, subtotalCol);
     
     botonAgregar.setOnAction(event -> {
-      addCarrito();
-      calculaSubtotal();
-      texSubtotal.setText(subtotal+"");
+      if (listViewData.isEmpty()) {
+        System.out.println("No hay nada");
+      } else {
+        addCarrito();
+        calculaSubtotal();
+        texSubtotal.setText(subtotal + "");
+      }
     });
     
     botonEliminar.setOnAction(event -> {
@@ -105,8 +109,25 @@ public class VistaVentasController implements Initializable  {
     });
     
     botonFinalizar.setOnAction(event -> {
-      descontarInventario();
-      generarVenta();
+      if (dataCarrito.isEmpty()) {
+        System.out.println("El carrito esta vacio");
+      } else {
+        descontarInventario();
+        generarVenta();
+        dataCarrito.clear();
+        texSubtotal.clear();
+        texIva.clear();
+        textTotal.clear();
+        texBusqueda.clear();
+      }
+    });
+    
+    texBusqueda.textProperty().addListener(new ChangeListener<String>() {
+      @Override
+      public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+        metodoDeBusquedaTriple();
+        listaProductos.getSelectionModel().select(0);
+      }
     });
     
     texSubtotal.textProperty().addListener(new ChangeListener<String>() {
@@ -236,4 +257,14 @@ public class VistaVentasController implements Initializable  {
     this.isEditable = b; 
   }
   
+  public void metodoDeBusquedaTriple(){
+    String criterio = texBusqueda.getText();
+    listViewData.clear();
+    for (int i = 0; i < inventario.size(); i++) {
+      if (inventario.get(i).getClave().indexOf(criterio) != -1 || inventario.get(i).getNombre().indexOf(criterio) != -1 || inventario.get(i).getDescripcion().indexOf(criterio) != -1) {
+        listViewData.add(inventario.get(i));
+      }
+    }
+    listaProductos.setItems(listViewData);
+  }
 }

@@ -6,6 +6,7 @@
 package sife;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,13 +40,23 @@ public class PrincipalController implements Initializable {
   private Stage stagePrincipal;
   private boolean isEditable; 
   private SIFE ProgramaPrincipal = new SIFE();
+  
+  private final Archivo archInventario = new Archivo("inventario.obj");
+  private ArrayList<Herramienta> inventario;  
+  private final Archivo archNotas = new Archivo("notas.obj");
+  private ArrayList<Venta> ventas;
 
   /**
    * Initializes the controller class.
    */
   @Override
   public void initialize(URL url, ResourceBundle rb) {
-    
+    leerInventario();
+    leerVentas();
+    setHerramientas();
+    setVentas();
+    setIngresos();
+    setActivos();
   }  
   @FXML
   private void inventario(ActionEvent event) {
@@ -60,7 +71,7 @@ public class PrincipalController implements Initializable {
     if (isEditable) {
       ProgramaPrincipal.cargarVentas();
     }else{
-      ProgramaPrincipal.cargarVentasObservable();
+      System.out.println("Lo siento, no puedes vender");
     }
   }
   @FXML
@@ -78,6 +89,46 @@ public class PrincipalController implements Initializable {
 
   void setEditable(boolean b) {
     this.isEditable = b; 
+  }
+  
+  public void setHerramientas(){
+    texHerramientas.setText(inventario.size()+"");
+  }
+  
+  public void setVentas(){
+    textVentas.setText(ventas.size()+"");
+  }
+  
+  public void setIngresos(){
+    double ingresos = 0;
+    for (int i = 0; i < ventas.size(); i++) {
+      ingresos += (ventas.get(i).getSubtotal() - (ventas.get(i).getSubtotal()/1.5));
+    }
+    textGanancias.setText(ingresos+"");
+  }
+  
+  public void setActivos(){
+    double activos = 0;
+    for (int i = 0; i < inventario.size(); i++) {
+      activos += (inventario.get(i).getPrecioCompra() * inventario.get(i).getExistencia());
+    }
+    textActivos.setText(activos+"");
+  }
+  
+  public void leerInventario(){
+    if (archInventario.existencia()) {
+      inventario = archInventario.entrada();
+    } else {
+      inventario = new ArrayList();
+    }
+  }
+  
+  public void leerVentas() {
+    if (archNotas.existencia()) {
+      ventas = archNotas.entrada();
+    } else {
+      ventas = new ArrayList();
+    }
   }
   
 }

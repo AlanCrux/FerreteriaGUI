@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="sife.PrincipalController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sife.PrincipalController">
    <children>
       <Pane prefHeight="79.0" prefWidth="800.0" style="-fx-background-color: #4169E1;">
          <children>
@@ -19,17 +18,17 @@
             </Label>
          </children>
       </Pane>
-      <Button fx:id="botonInventario" layoutX="519.0" layoutY="96.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #FF4500;" text="Inventario" onAction="#inventario" textFill="WHITE">
+      <Button fx:id="botonInventario" layoutX="519.0" layoutY="96.0" mnemonicParsing="false" onAction="#inventario" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #FF4500;" text="Inventario" textFill="WHITE">
          <font>
             <Font name="AvenirNextLTPro-Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="botonVender" layoutX="388.0" layoutY="96.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #32CD32;" text="Vender" onAction="#vender" textFill="WHITE">
+      <Button fx:id="botonVender" layoutX="388.0" layoutY="96.0" mnemonicParsing="false" onAction="#vender" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #32CD32;" text="Vender" textFill="WHITE">
          <font>
             <Font name="AvenirNextLTPro-Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="botonReportes" layoutX="652.0" layoutY="96.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #FF1493;" text="Reportes" onAction="#reportes" textFill="WHITE">
+      <Button fx:id="botonReportes" layoutX="652.0" layoutY="96.0" mnemonicParsing="false" onAction="#reportes" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #FF1493;" text="Reportes" textFill="WHITE">
          <font>
             <Font name="AvenirNextLTPro-Bold" size="18.0" />
          </font>

@@ -8,6 +8,8 @@ package sife;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -42,14 +44,6 @@ public class VistaDetalleVentaController implements Initializable {
   private TextField texIva;
   @FXML
   private TextField textTotal;
-  @FXML
-  private Button botonSalir;
-  @FXML
-  private TextField texFechaInicio;
-  @FXML
-  private TextField texFechaFin;
-  @FXML
-  private Button botonFiltro;
   
   private final Archivo archNotas = new Archivo("notas.obj");
   private ArrayList<Venta> ventas;
@@ -78,6 +72,13 @@ public class VistaDetalleVentaController implements Initializable {
     botonCargar.setOnAction(event -> {
       cargarNota();
     });
+    
+    textBusqueda.textProperty().addListener(new ChangeListener<String>() {
+      @Override
+      public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+        metodoDeBusquedaDoble();
+      }
+    });
   }
   
   public void leerVentas(){
@@ -93,6 +94,17 @@ public class VistaDetalleVentaController implements Initializable {
       //System.out.println(ventas.get(i));
       //EL PROBLEMA ESTA AQUI
     }
+  }
+  
+  public void metodoDeBusquedaDoble(){
+    String criterio = textBusqueda.getText();
+    listViewData.clear();
+    for (int i = 0; i < listViewData.size(); i++) {
+      if (listViewData.get(i).getIdNota().indexOf(criterio) != -1 || listViewData.get(i).getFecha().indexOf(criterio) != -1 ) {
+        listViewData.add(listViewData.get(i));
+      }
+    }
+    listaNotas.setItems(listViewData);
   }
   
   public void cargarNota(){

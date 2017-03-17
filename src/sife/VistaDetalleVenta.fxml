@@ -9,14 +9,14 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sife.VistaDetalleVentaController">
    <children>
-      <ListView fx:id="listaNotas" layoutY="105.0" prefHeight="310.0" prefWidth="252.0" />
-      <TextField fx:id="textBusqueda" layoutX="7.0" layoutY="50.0" prefHeight="45.0" prefWidth="156.0" promptText="Ingresa folio" />
+      <ListView fx:id="listaNotas" layoutY="105.0" prefHeight="494.0" prefWidth="252.0" />
+      <TextField fx:id="textBusqueda" layoutX="7.0" layoutY="50.0" prefHeight="45.0" prefWidth="156.0" promptText="Folio o fecha" />
       <Button fx:id="botonCargar" layoutX="175.0" layoutY="50.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="77.0" style="-fx-background-color: #20B2AA;" text="Cargar" textFill="WHITE">
          <font>
             <Font name="AvenirNextLTPro-Bold" size="15.0" />
          </font>
       </Button>
-      <Label layoutX="404.0" layoutY="61.0" text="DETALLE DE VENTA">
+      <Label layoutX="423.0" layoutY="61.0" text="DETALLE DE VENTA">
          <font>
             <Font name="AvenirNextLTPro-Bold" size="20.0" />
          </font>
@@ -54,24 +54,17 @@
             <Font name="AvenirNextLTPro-Regular" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="textSubtotal" editable="false" layoutX="539.0" layoutY="433.0" />
-      <TextField fx:id="texIva" editable="false" layoutX="539.0" layoutY="475.0" />
-      <TextField fx:id="textTotal" editable="false" layoutX="539.0" layoutY="518.0" />
-      <Button fx:id="botonSalir" layoutX="694.0" layoutY="19.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="77.0" style="-fx-background-color: #FF6347;" text="Salir" textFill="WHITE">
+      <TextField fx:id="textSubtotal" editable="false" layoutX="539.0" layoutY="433.0" prefHeight="29.0" prefWidth="187.0">
          <font>
             <Font name="AvenirNextLTPro-Bold" size="15.0" />
-         </font>
-      </Button>
-      <TextField fx:id="texFechaInicio" layoutX="59.0" layoutY="433.0" prefHeight="45.0" prefWidth="193.0" promptText="Fecha inicio dd/mm/aaaa" />
-      <TextField fx:id="texFechaFin" layoutX="59.0" layoutY="484.0" prefHeight="45.0" prefWidth="193.0" promptText="Fecha fin dd/mm/aaaa">
-         <font>
-            <Font name="AvenirNextLTPro-Regular" size="15.0" />
-         </font>
-      </TextField>
-      <Button fx:id="botonFiltro" layoutX="141.0" layoutY="537.0" mnemonicParsing="false" style="-fx-background-color: #4169E1;" text="Aplicar filtro" textFill="WHITE">
+         </font></TextField>
+      <TextField fx:id="texIva" editable="false" layoutX="539.0" layoutY="475.0" prefHeight="29.0" prefWidth="187.0">
          <font>
             <Font name="AvenirNextLTPro-Bold" size="15.0" />
-         </font>
-      </Button>
+         </font></TextField>
+      <TextField fx:id="textTotal" editable="false" layoutX="539.0" layoutY="518.0" prefHeight="28.0" prefWidth="187.0">
+         <font>
+            <Font name="AvenirNextLTPro-Bold" size="15.0" />
+         </font></TextField>
    </children>
 </AnchorPane>

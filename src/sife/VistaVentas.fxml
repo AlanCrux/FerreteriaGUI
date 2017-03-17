@@ -26,11 +26,6 @@
             <Font name="AvenirNextLTPro-Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="botonCancelar" layoutX="649.0" layoutY="466.0" mnemonicParsing="false" text="Cancelar">
-         <font>
-            <Font name="AvenirNextLTPro-Bold" size="18.0" />
-         </font>
-      </Button>
       <Label layoutX="293.0" layoutY="375.0" text="SUBTOTAL:">
          <font>
             <Font name="AvenirNextLTPro-Regular" size="18.0" />
